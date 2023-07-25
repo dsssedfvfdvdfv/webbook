@@ -1,0 +1,325 @@
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+
+<title>Insert title here</title>
+<base href="/"> 
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/product.css" />
+<link rel="stylesheet" type="text/css" href="/css/fast.css" />
+<link rel="stylesheet" type="text/css" href="/css/product-detail.css" />
+<link rel="stylesheet" href="../themify-icons/themify-icons.css">
+</head>
+<body>
+<header>
+		<div class="header">
+			<ul class="container">
+				<li>
+					<div class="title-logo">TVT STORE</div>
+				</li>
+				<li class="menu"><img src="../img/icon/menu.png" alt=""
+					class="icon-menu">
+					<ul class="dropdown">
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Monitors</a></li>
+						<li><a href="#">Printers</a></li>
+					</ul></li>
+				<li>
+					<div class="tab-search">
+						<input type="text" placeholder="Nhập tìm kiếm vào đây...">
+						<div class="search">
+							<a href="" class="ti-search"></a>
+						</div>
+					</div>
+				</li>
+				<li class="pd-20" style="padding-left: 40px !important;"><img
+					src="../img/icon/notification.png" alt="">
+					<div class="title-icon">Thông báo</div></li>
+				<li class="pd-20 cart"><img src="../img/icon/shopping-cart.png"
+					alt="">
+					<div class="title-icon">Giỏ hàng</div>
+					<div class="cart-form">
+						<table>
+							<thead>
+								<tr>
+									<th>STT</th>
+									<th>Hình</th>
+									<th>Tên</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+						<input type="submit" value="Thanh toán">
+					</div></li>
+				<li class="pd-20 account"><a th:href=@{/page/accountdetail} >
+						<img src="../img/icon/user.png" alt="">
+						<div class="title-icon">Tài khoản</div>
+						<ul class="dropdown">
+							<li><a th:href="@{/page/login}" class="menu-second">Đăng
+									nhập</a></li>
+							<li><a th:href="@{/page/register}" class="menu-second">Đăng
+									ký</a></li>
+						</ul>
+				</a></li>
+			</ul>
+		</div>
+	</header>
+	    <div class="container">
+        <div class="detail">
+          <div class="detail-img">
+            <div class="sub-img">
+             
+           <img th:src="@{'../img/anhsanpham/' + ${product.hinh}}" alt="">
+              
+            </div>
+            <div class="main-img"><img src="../img/anhsanpham/but/butdo.jpg" alt="" /></div>
+            <div class="clear-float"></div>
+            <div class="btn">
+              <button class="btn-add-cart">Thêm vào giỏ hàng</button>
+              	<a
+						th:href="@{/cart/buy/{idsanpham}(idsanpham=${product.idsanpham})}">
+						<button class="buy-btn">Thêm giỏ hàng</button>
+					</a>
+            </div>
+            <div class="clear-float"></div>
+          </div>
+          
+          <!-- Thông tin sản phẩm chi tiết sau khi được lấy qua ID ở main sẽ ở đây  -->
+          
+          
+          <div	 class="detail-content">
+            <div class="title" th:text="${product.tensp}"></div>
+            
+            <div class="info">
+              <div class="col-2">
+                <div>
+                  Nhà cung cấp: <span class="special-blue" th:text="${product.nhacungcap}"></span>
+                </div>
+                <div>
+                  Nhà xuất bản:
+                  <span class="special-bold" th:text="${product.nhaxuatban}">Nhà xuất bản tổng hợp</span>
+                </div>
+              </div>
+              <div class="col-2">
+                <div>
+                  Tác giả: <span class="special-bold" th:text="${product.tacgia}">Dale Carnegie</span>
+                </div>
+                <div>
+                  Hình thức bìa: <span class="special-bold" th:text="${product.hinhthucbia}">Bìa mềm</span>
+                </div>
+              </div>
+            </div>
+            <div class="clear-float"></div>
+            <div class="price">
+          <div class="old-price" th:text="${product.dongia} +' VND'"> </div>
+        
+            </div>
+            <div class="time">
+              <div class="mar-bot-16">
+                Thời gian giao hàng: Giao hàng đến
+                <span class="special-blue">Thay đổi</span>
+              </div>
+              <div>
+                Chính sách đổi trả: Đổi trả săn phẩm trong 30 ngày
+                <span class="special-blue">Xem thêm</span>
+              </div>
+            </div>
+            <div class="amount">
+              <span class="special-bold">Số lượng: </span> <input type="number" />
+            </div>
+          </div>
+        </div>
+        <div class="related-sales">
+          <div class="sale-header special-bold">Ưu đãi liên quan</div>
+          <div class="sale-title special-bold">Mã giảm giá</div>
+          <div class="sale-group mar-right-48">
+            <div class="sale-icon">
+              <img src="../img/anhqc/anhsale.jpg" alt="" />
+            </div>
+            <div class="sale-content special-bold">
+              Mã giảm giá 50% khi là thành viên kim cương
+            </div>
+          </div>
+          <div class="sale-group mar-right-48">
+            <div class="sale-icon">
+              <img src="../img/anhqc/anhsale.jpg" alt="" />
+            </div>
+            <div class="sale-content special-bold">
+              Mã giảm giá 50% khi là thành viên kim cương
+            </div>
+          </div>
+          <div class="sale-group">
+            <div class="sale-icon">
+              <img src="../img/anhqc/anhsale.jpg" alt="" />
+            </div>
+            <div class="sale-content special-bold">
+              Mã giảm giá 50% khi là thành viên kim cương
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sản phâm được lọc theo cùng ID với sản phẩm chi tiết hiện tại đây  -->
+        
+        
+        <div class="products">
+          <div class="products-header">VPP-<span th:text="${phanloai.tenphanloai}"></span></div>
+          <!-- Lặp sản phẩm -->
+          <div class="item-gruop mar-right-48" th:each="products : ${proSortID}" >
+              <div class="item-poster">
+              <!-- Thêm hình dựa theo loại và tên sản phẩm -->
+                   <img th:src="@{'../img/anhsanpham/' + ${products.hinh}}" alt="" />
+                  
+              </div>
+				<div class="item-title" th:text="${products.tensp}"></div>
+				<div class="prices">
+              <div class="item-price-sale " th:text="${products.dongia}">VND</div>
+              <div class="item-price" th:text="${products.dongia}-${products.dongia}*20/100 + ' VND'">99999 VND</div>
+               </div>            
+          </div>
+        
+          
+			
+									
+        </div>
+        
+        <div class="information">
+          <div class="information-header">
+            Thông tin sản phẩm
+          </div>
+          
+          
+          <div class="col-2">
+            <div class="special-bold mar-top-right-bot-24">Mã hàng:
+            </div>
+            <div class="special-bold" >Tên nhà cung cấp:</div>
+          </div>
+          <div class="col-2">
+            <div class="mar-24" th:text="${product.idsanpham}"></div>
+            <div class="special-blue special-bold mar-24" th:text="${product.nhacungcap}"></div>
+          </div>
+          <div class="clear-float"></div>
+          <div class="info-content mar-top-bot-32">
+            Giá sản phẩm trên Fahasa.com đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như Phụ phí đóng gói, phí vận chuyển, phụ phí hàng cồng kềnh,...
+          </div>
+          <hr>
+          <div class="info-content mar-top-bot-32" th:text="${product.infosanpham}">Đắc nhân tâm của Dale Carnegie là quyển sách của mọi thời đại và một hiện tượng đáng kinh ngạc trong ngành xuất bản Hoa Kỳ. Trong suốt nhiều thập kỷ tiếp theo và cho đến tận bây giờ, tác phẩm này vẫn chiếm vị trí số một trong danh mục sách bán chạy nhất và trở thành một sự kiện có một không hai trong lịch sử ngành xuất bản thế giới và được đánh giá là một quyển sách có tầm ảnh hưởng nhất mọi thời đại.
+  
+          </div>
+          
+        </div>
+        <div class="navi-bot">
+          <div class="mar-right-24">Chính sách khách sỉ</div>
+          <div class="mar-left-right-48">Thời gian giao hàng</div>
+           <div class="mar-left-24">Chính sách đổi trả</div>
+        </div>
+      </div>
+	  <footer>
+        <div class="footer">
+          <div class="send-email">
+            <a href="#" class="ti-email"></a>
+            <div class="register-infoemail">Đăng ký nhận bản tin</div>
+            <input type="text" placeholder="Nhập địa chỉ email của bạn...">
+            <div class="input-email">
+              <a href="#">Đăng ký</a>
+            </div>
+          </div>
+          <div class="container-footer">
+            <div class="half">
+              <div class="address">
+                Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCM
+                Công Ty Cổ Phần Phát Hành Sách TP HCM - FAHASA
+                60 - 62 Lê Lợi, Quận 1, TP. HCM, Việt Nam
+                Fahasa.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực
+                tiếp tại văn phòng cũng như tất cả Hệ Thống Fahasa trên toàn quốc.
+              </div>
+              <img src="../img/logo-bo-cong-thuong-da-thong-bao1.png" alt="" class="logo-ct">
+              <div class="icon-brand">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-pinterest"></i></a>
+              </div>
+              <div class="store-app">
+                <img src="../img/android1.png" alt="">
+                <img src="../img/appstore1.png" alt="">
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="half" style="width: 60%;">
+              <div class="service">
+                <a href="#">DỊCH VỤ</a>
+                <ul>
+                  <li><a href="#">Điều khoản dịch vụ</a></li>
+                  <li><a href="#">Chính sách bảo mật thông tin cá nhân</a></li>
+                  <li><a href="#">Chính sách bảo mật thanh toán</a></li>
+                  <li><a href="#">Hệ thống trung tâm nhà sách</a></li>
+                  <li><a href="#">Giới thiệu TVT STORE</a></li>
+                </ul>
+              </div>
+              <div class="service">
+                <a href="#">HỖ TRỢ</a>
+                <ul>
+                  <li><a href="#">Chính sách đổi - trả - hoàn tiền</a></li>
+                  <li><a href="#">Chính sách bảo hành - bồi hoàn</a></li>
+                  <li><a href="#">Chính sách vận chuyển</a></li>
+                  <li><a href="#">Chính sách khách sỉ</a></li>
+                  <li><a href="#">Phương thức thanh toán và xuất HĐ</a></li>
+                </ul>
+              </div>
+              <div class="service">
+                <a href="#">TÀI KHOẢN CỦA TÔI</a>
+                <ul>
+                  <li><a href="#">Đăng nhập/Tạo mới tài khoản</a></li>
+                  <li><a href="#">Thay đổi địa chỉ khách hàng</a></li>
+                  <li><a href="#">Chi tiết tài khoản</a></li>
+                  <li><a href="#">Lịch sử mua hàng</a></li>
+                  <li><a href="#">Quên mật khẩu</a></li>
+                </ul>
+              </div>
+    
+              <div class="payment-channel">
+                <ul>
+                  <li>
+                    <img src="../img/ahamove_logo3.png" alt="">
+                  </li>
+                  <li>
+                    <img src="../img/icon_giao_hang_nhanh1.png" alt="">
+                  </li>
+                  <li>
+                    <img src="../img/momopay.png" alt="" style="width: 50px; height: 50px;">
+                  </li>
+                  <li>
+                    <img src="../img/logo_moca_120.jpg" alt="" style="width: 50px; height: 50px;">
+                  </li>
+                  <li>
+                    <img src="../img/icon_snappy1.png" alt="">
+                  </li>
+                  <li>
+                    <img src="../img/shopeepay_logo.png" alt="">
+                  </li>
+                  <li>
+                    <img src="../img/vnpay_logo.png" alt="">
+                  </li>
+                  <li>
+                    <img src="../img/vnpost1.png" alt="">
+                  </li>
+                </ul>
+              </div>
+            </div>
+    
+          </div>
+          <div class="text-certification">
+            Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp
+            ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/product.css" />
+<link rel="stylesheet" type="text/css" href="/css/fast.css" />
+
+</head>
+<body>
+	<header>
+		<div class="header">
+			<ul class="container">
+				<li><a th:href="@{/form/main}"><div class="title-logo">TVT
+							STORE</div></a></li>
+				<li class="menu"><img src="../img/icon/menu.png" alt=""
+					class="icon-menu">
+					<ul class="dropdown">
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Monitors</a></li>
+						<li><a href="#">Printers</a></li>
+					</ul></li>
+				<li>
+					<div class="tab-search">
+						<form th:action="@{/cart/search-product}" method="post">
+							<input type="text" placeholder="Nhập tìm kiếm vào đây..."
+								name="nameproduct">
+							<div class="search">
+								<button>Tìm kiếm</button>
+							</div>
+						</form>
+
+					</div>
+				</li>
+				<li class="pd-20" style="padding-left: 40px !important;"><img
+					src="../img/icon/notification.png" alt="">
+					<div class="title-icon">Thông báo</div></li>
+				<li class="pd-20 cart" onmouseover="showCart()"
+					onmouseout="hideCart()"><img
+					src="../img/icon/shopping-cart.png" alt="">
+					<div class="title-icon">Giỏ hàng</div>
+
+					<div class="cart-form">
+						<table>
+							<thead>
+								<tr>
+									<th>Hình</th>
+									<th>Tên</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="product : ${cart}">
+									<td><img
+										th:src="@{'../img/anhsanpham/' + ${product.hinh}}" alt=""
+										class="img-project"></td>
+									<td th:text="${product.tensp}"></td>
+									<td th:text="${product.dongia} + ' VND'"></td>
+									<td><input type="number" min="1"
+										th:value="${product.quantity}"
+										th:attr="data-product-id=${product.idsanpham}"
+										onchange="updateQuantity(this)"></td>
+									<td><a
+										th:href="@{/cart/remove/{idsanpham}(idsanpham=${product.idsanpham})}">
+											<button class="remove-product">Remove</button>
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<a th:href="@{/cart/go-cart}"><input type="submit"
+							value="Thanh toán"></a> <a th:href="@{/cart/clear}"><input
+							type="submit" value="Xóa giỏ hàng"></a>
+					</div></li>
+				<li class="pd-20 account"><a th:href=@{/page/accountdetail}>
+						<img src="../img/icon/user.png" alt="">
+						<div class="title-icon" th:text="${user}">Tài khoản</div>
+						<ul class="dropdown">
+							<li><a th:href="@{/form/logout}" class="menu-second">Đăng
+									xuất</a></li>
+
+						</ul>
+				</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="poster ">
+			<img src="../img/anhqc/anhsale.jpg" alt="">
+		</div>
+		<div class="form-sale">
+			<div class="time-sale">
+				<div class="flash-sale">
+					<img src="../img/kindofbook/ico_flashsale@3x.png" alt="">
+					FLASE SALE
+				</div>
+				<div class="diver"></div>
+				<div id="countdown">
+					Kết thúc trong :
+					<div id="days"></div>
+					:
+					<div id="hours"></div>
+					:
+					<div id="minutes"></div>
+					:
+					<div id="seconds"></div>
+				</div>
+
+			</div>
+		</div>
+		<div class="clear-float"></div>
+		<ul class="filter marx-auto pad-24">
+			<li class="select-all filter-item mar-right-48 ">Tất cả</li>
+			<li class="filter-item pad-16">Other language</li>
+			<li class="filter-item pad-16">Sách học ngoại ngữ</li>
+			<li class="filter-item pad-16">Tâm lý - kỹ năng sống</li>
+			<li class="filter-item pad-16">Dụng cụ học tập</li>
+			<li class="filter-item pad-16">Khác</li>
+		</ul>
+	</div>
+	<div class="list-products">
+		<div class="row">
+			<div class="item mar-right-56" th:each="product: ${products}">
+				<a th:href="@{/page/product-detail/{id}(id=${product.idsanpham})}">
+					<div class="item-poster">
+						<img th:src="@{'../img/anhsanpham/' + ${product.hinh}}" alt="">
+					</div>
+				</a>
+
+				<div class="item-title" th:text="${product.tensp}"></div>
+				<div class="price">
+					<div class="item-price" th:text="${product.dongia} + ' VND'"></div>
+
+					<div class="btn-container">
+						<a
+							th:href="@{/cart/buy/{idsanpham}(idsanpham=${product.idsanpham})}">
+							<button class="buy-btn">Thêm giỏ hàng</button>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<a th:href="@{/cart/page-products(p=0)}">First</a> <a
+			th:href="@{/cart/page-products(p=${products.number-1})}"
+			th:if="${products.number > 0}">Previous</a> <a
+			th:href="@{/cart/page-products(p=${products.number + 1})}"
+			th:if="${products.totalPages > 1 && products.size() > 4}">Next</a> <a
+			th:href="@{/cart/page-products(p=${products.totalPages-1})}">Last</a>
+		<footer>
+			<div class="footer">
+				<div class="send-email">
+					<a href="#" class="ti-email"></a>
+					<div class="register-infoemail">Đăng ký nhận bản tin</div>
+					<input type="text" placeholder="Nhập địa chỉ email của bạn...">
+					<div class="input-email">
+						<a href="#">Đăng ký</a>
+					</div>
+				</div>
+				<div class="container-footer">
+					<div class="half">
+						<div class="address">Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP
+							HCM Công Ty Cổ Phần Phát Hành Sách TP HCM - FAHASA 60 - 62 Lê
+							Lợi, Quận 1, TP. HCM, Việt Nam Fahasa.com nhận đặt hàng trực
+							tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng
+							trực tiếp tại văn phòng cũng như tất cả Hệ Thống Fahasa trên toàn
+							quốc.</div>
+						<img src="../img/logo-bo-cong-thuong-da-thong-bao1.png" alt=""
+							class="logo-ct">
+						<div class="icon-brand">
+							<a href=""><i class="fa-brands fa-facebook"></i></a> <a href=""><i
+								class="fa-brands fa-youtube"></i></a> <a href=""><i
+								class="fa-brands fa-square-instagram"></i></a> <a href=""><i
+								class="fa-brands fa-twitter"></i></a> <a href=""><i
+								class="fa-brands fa-pinterest"></i></a>
+						</div>
+						<div class="store-app">
+							<img src="../img/android1.png" alt=""> <img
+								src="../img/appstore1.png" alt="">
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="half" style="width: 60%;">
+						<div class="service">
+							<a href="#">DỊCH VỤ</a>
+							<ul>
+								<li><a href="#">Điều khoản dịch vụ</a></li>
+								<li><a href="#">Chính sách bảo mật thông tin cá nhân</a></li>
+								<li><a href="#">Chính sách bảo mật thanh toán</a></li>
+								<li><a href="#">Hệ thống trung tâm nhà sách</a></li>
+								<li><a href="#">Giới thiệu TVT STORE</a></li>
+							</ul>
+						</div>
+						<div class="service">
+							<a href="#">HỖ TRỢ</a>
+							<ul>
+								<li><a href="#">Chính sách đổi - trả - hoàn tiền</a></li>
+								<li><a href="#">Chính sách bảo hành - bồi hoàn</a></li>
+								<li><a href="#">Chính sách vận chuyển</a></li>
+								<li><a href="#">Chính sách khách sỉ</a></li>
+								<li><a href="#">Phương thức thanh toán và xuất HĐ</a></li>
+							</ul>
+						</div>
+						<div class="service">
+							<a href="#">TÀI KHOẢN CỦA TÔI</a>
+							<ul>
+								<li><a href="#">Đăng nhập/Tạo mới tài khoản</a></li>
+								<li><a href="#">Thay đổi địa chỉ khách hàng</a></li>
+								<li><a href="#">Chi tiết tài khoản</a></li>
+								<li><a href="#">Lịch sử mua hàng</a></li>
+								<li><a href="#">Quên mật khẩu</a></li>
+							</ul>
+						</div>
+
+						<div class="payment-channel">
+							<ul>
+								<li><img src="../img/ahamove_logo3.png" alt=""></li>
+								<li><img src="../img/icon_giao_hang_nhanh1.png" alt="">
+								</li>
+								<li><img src="../img/momopay.png" alt=""
+									style="width: 50px; height: 50px;"></li>
+								<li><img src="../img/logo_moca_120.jpg" alt=""
+									style="width: 50px; height: 50px;"></li>
+								<li><img src="../img/icon_snappy1.png" alt=""></li>
+								<li><img src="../img/shopeepay_logo.png" alt=""></li>
+								<li><img src="../img/vnpay_logo.png" alt=""></li>
+								<li><img src="../img/vnpost1.png" alt=""></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div class="text-certification">Giấy chứng nhận Đăng ký Kinh
+					doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh
+					cấp ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.</div>
+			</div>
+		</footer>
+</body>
+<script src="/js/countdown.js"></script>
+</html>

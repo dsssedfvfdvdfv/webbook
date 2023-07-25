@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" href="../themify-icons/themify-icons.css">
+
+
+</head>
+<body>
+	<header>
+		<div class="header">
+			<ul class="container">
+				<li>
+					<div class="title-logo">TVT STORE</div>
+				</li>
+				<li class="menu"><img src="../img/icon/menu.png" alt=""
+					class="icon-menu">
+					<ul class="dropdown">
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Monitors</a></li>
+						<li><a href="#">Printers</a></li>
+					</ul></li>
+				<li>
+					<div class="tab-search">
+						<input type="text" placeholder="Nhập tìm kiếm vào đây...">
+						<div class="search">
+							<a href=""> <i class="ti-search"></i></a>
+						</div>
+					</div>
+				</li>
+				<li class="pd-20" style="padding-left: 40px !important;"><img
+					src="../img/icon/notification.png" alt="">
+					<div class="title-icon">Thông báo</div></li>
+				<li class="pd-20 cart"><img src="../img/icon/shopping-cart.png"
+					alt="">
+					<div class="title-icon">Giỏ hàng</div>
+
+					<div class="cart-form">
+						<img alt="" src="../img/empty-cart.png" class="logo-empty">
+						<a th:href="@{/cart/page-products-no-user}"> Đi đến trang sản
+							phẩm</a>
+					</div></li>
+				<li class="pd-20 account"><a th:href=@{/page/accountdetail}>
+						<img src="../img/icon/user.png" alt="">
+						<div class="title-icon">Tài khoản</div>
+						<div th:if="${orderSuccess}">
+							<p>Đặt hàng thành công!</p>
+						</div>
+						<ul class="dropdown">
+							<li><a th:href="@{/page/login}" class="menu-second">Đăng
+									nhập</a></li>
+							<li><a th:href="@{/page/register}" class="menu-second">Đăng
+									ký</a></li>
+						</ul>
+				</a></li>
+			</ul>
+		</div>
+	</header>
+
+
+	<article>
+		<div class="container-intro">
+			<div class="img_featured ">
+				<div class="img_featured-left">
+					<button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+					<img id="img" src="../img/anhqc/DinhTi_T5_Slide_840x320.jpg" alt=""
+						onclick="changeIMG()">
+					<button class="next" onclick="changeSlide(1)">&#10095;</button>
+				</div>
+				<div class="img_featured-right">
+					<img src="../img/anhqc/Gift_subbanner_392x156.jpg" alt=""> <img
+						src="../img/anhqc/PoticoT5_FAHASA 392x156 .png" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="container-discount">
+			<img
+				src="../img/anhqc/TrangDoChoiT523_Banner_SmallBanner_310x210.png"
+				alt=""> <img
+				src="../img/anhqc/SaleT3_Bo2_Smallbanner_310x210_2.png" alt=""
+				class="pd-10"> <img
+				src="../img/anhqc/Tamlinh_mainbanner_T5_Smallbanner_310x210_2.png"
+				alt="" class="pd-10"> <img
+				src="../img/anhqc/SubBanner_T523_-03_TrangThieuNhi.png" alt="">
+		</div>
+		<div class="kind-of-book">
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_FlashSale_Thuong_120x120.png"
+					alt="">
+				<p>Flash Sale</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_MaGiamGia_8px_1.png" alt="">
+				<p>Mã Giảm giá</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/FahasaThu3_Thang5_F3.png" alt="">
+				<p>Sale thứ 3</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_XuHuong_Thuong_120x120.png" alt="">
+				<p>Xu hướng</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_MangaCommic_8px_1.png" alt="">
+				<p>Manga - Comic</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_PhienChoCu_8px_1.png" alt="">
+				<p>Phiên chợ sách cũ</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_SanPhamMoi_8px_1.png" alt="">
+				<p>Sản phẩm mới</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_ThieuNhi_Thuong_120x120.png" alt="">
+				<p>Thiếu nhi</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/TamLyKyNang_50.png" alt="">
+				<p>Tâm lý-Kỹ năng</p>
+			</div>
+			<div class="type-book">
+				<img src="../img/kindofbook/Icon_VanPhongPham_Thương_120x120.png"
+					alt="">
+				<p>
+					Văn phòng phẩm
+					<main></main>
+				</p>
+			</div>
+		</div>
+
+		<div class="container-sale">
+			<div class="time-sale">
+				<div class="flash-sale">
+					<img src="../img/kindofbook/ico_flashsale@3x.png" alt="">
+					FLASE SALE
+				</div>
+				<div class="diver"></div>
+				<div id="countdown">
+					Kết thúc trong :
+					<div id="days"></div>
+					:
+					<div id="hours"></div>
+					:
+					<div id="minutes"></div>
+					:
+					<div id="seconds"></div>
+				</div>
+
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/cotienxanh.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ Tranh Tương Tác Cô Tiên Xanh</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/1001truyencotich.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">100 Truyện Cổ Tích Việt Nam (Tái
+						Bản 2019)</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/ninja-rantaro_bia_tap-7.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Ninja Rantaro - Tập 7</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/blue-block_bia_postcard_tap-7.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">BlueLock - Tập 7 - Tặng Kèm Card
+						PVC</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+
+
+		<div class="container-sale" style="height: 600px;">
+			<div class="time-sale" style="background-color: #FCDDEF;">
+				<div class="flash-sale">
+					<img src="../img/kindofbook/ico_dealhot.png" alt=""> XU HƯỚNG
+					MUA SẮM
+				</div>
+			</div>
+			<div class="type-book">
+				<ul>
+					<li>Xu hướng theo ngày</li>
+					<li>Sách hot giảm sốc</li>
+					<li>Bestsell anh văn</li>
+				</ul>
+			</div>
+			<hr>
+			<div class="product">
+				<img src="../img/anhsanpham/cotienxanh.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ Tranh Tương Tác Cô Tiên Xanh</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/1001truyencotich.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">100 Truyện Cổ Tích Việt Nam (Tái
+						Bản 2019)</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/ninja-rantaro_bia_tap-7.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Ninja Rantaro - Tập 7</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/blue-block_bia_postcard_tap-7.jpg"
+					alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">BlueLock - Tập 7 - Tặng Kèm Card
+						PVC</div>
+					<div class="product-price">
+						Giá: <span class="price-first">$100</span>
+					</div>
+					<div class="product-discount">$80</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+
+
+		<div class="container-sale" style="height: 600px;">
+			<div class="type-book">
+				<ul>
+					<li>Dụng cụ học sinh</li>
+					<li>Bộ dụng cụ học tập</li>
+					<li>Combo tiết kiệm</li>
+					<li>Cặp-balo</li>
+				</ul>
+			</div>
+			<hr>
+
+			<div class="product">
+				<img src="../img/anhsanpham/butden.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bút đen</div>
+					<div class="product-price">
+						Giá: <span class="price-first">20.000VND</span>
+					</div>
+					<div class="product-discount">15.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/butdo.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bút đỏ</div>
+					<div class="product-price">
+						Giá: <span class="price-first">20.000VND</span>
+					</div>
+					<div class="product-discount">15.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/vobut.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Vỏ bút trắng</div>
+					<div class="product-price">
+						Giá: <span class="price-first">20.000VND</span>
+					</div>
+					<div class="product-discount">15.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/keo.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Kép</div>
+					<div class="product-price">
+						Giá: <span class="price-first">65.000VND</span>
+					</div>
+					<div class="product-discount">54.000VND</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+		<div class="container-sale" style="height: 600px;">
+			<div class="type-book">
+				<ul>
+					<li>SKG Cấp 1</li>
+					<li>SGK Cấp 2</li>
+					<li>SGK Cấp 3</li>
+				</ul>
+			</div>
+			<hr>
+
+			<div class="product">
+				<img src="../img/anhsanpham/sgkcap1.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ SGK Cấp 1</div>
+					<div class="product-price">
+						Giá: <span class="price-first">182.000VND</span>
+					</div>
+					<div class="product-discount">165.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/sgkcap2.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ SGK Cấp 2</div>
+					<div class="product-price">
+						Giá: <span class="price-first">182.000VND</span>
+					</div>
+					<div class="product-discount">165.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/sgkcap3.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ SGK Cấp 3</div>
+					<div class="product-price">
+						Giá: <span class="price-first">182.000VND</span>
+					</div>
+					<div class="product-discount">165.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/sgkcap1.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bộ SGK Cấp 1</div>
+					<div class="product-price">
+						Giá: <span class="price-first">182.000VND</span>
+					</div>
+					<div class="product-discount">165.000VND</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+		<div class="container-sale" style="height: 600px;">
+			<div class="type-book">
+				<ul>
+					<li>Tập Campus</li>
+					<li>Tập The Sun</li>
+					<li>Tập Elephant</li>
+					<li>Tập Hồng Hà</li>
+				</ul>
+			</div>
+			<hr>
+
+			<div class="product">
+				<img src="../img/anhsanpham/taphong.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Tập màu hồng</div>
+					<div class="product-price">
+						Giá: <span class="price-first">18.000VND</span>
+					</div>
+					<div class="product-discount">14.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/tapxanh.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Tập màu xanh</div>
+					<div class="product-price">
+						Giá: <span class="price-first">18.000VND</span>
+					</div>
+					<div class="product-discount">14.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/vofreelylife.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Tập Freely File</div>
+					<div class="product-price">
+						Giá: <span class="price-first">28.000VND</span>
+					</div>
+					<div class="product-discount">20.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/volandscape.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Tập LandScape</div>
+					<div class="product-price">
+						Giá: <span class="price-first">28.000VND</span>
+					</div>
+					<div class="product-discount">20.000VND</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+		<div class="container-sale" style="height: 600px;">
+			<div class="type-book">
+				<ul>
+					<li>Đồ dùng điện gia dụng</li>
+					<li>Đồ dùng điện cá nhân</li>
+					<li>Nhà cửa đời sống</li>
+					<li>Thiết bị đời sống</li>
+				</ul>
+			</div>
+			<hr>
+
+			<div class="product">
+				<img src="../img/anhsanpham/quatcamtay.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Quạt cầm tay mini</div>
+					<div class="product-price">
+						Giá: <span class="price-first">123.000VND</span>
+					</div>
+					<div class="product-discount">118.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/bitmat.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Bịt mắt ngủ</div>
+					<div class="product-price">
+						Giá: <span class="price-first">60.000VND</span>
+					</div>
+					<div class="product-discount">53.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/tuivai.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Túi vải</div>
+					<div class="product-price">
+						Giá: <span class="price-first">55.000VND</span>
+					</div>
+					<div class="product-discount">48.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/vi.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Ví cute</div>
+					<div class="product-price">
+						Giá: <span class="price-first">48.000VND</span>
+					</div>
+					<div class="product-discount">35.000VND</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>
+			</div>
+		</div>
+		<div class="container-sale" style="height: 600px;">
+			<div class="type-book">
+				<ul>
+					<li>Manga mới</li>
+					<li>Top Manga</li>
+					<li>Light novel mới</li>
+					<li>Top light novel</li>
+				</ul>
+			</div>
+			<hr>
+
+			<div class="product">
+				<img src="../img/anhsanpham/cona.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Conal-Tập 97</div>
+					<div class="product-price">
+						Giá: <span class="price-first">25.000VND</span>
+					</div>
+					<div class="product-discount">18.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/kigndom.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">KINGDOM</div>
+					<div class="product-price">
+						Giá: <span class="price-first">40.000VND</span>
+					</div>
+					<div class="product-discount">35.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/kyansieunhien.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Kỳ án siêu nhiên</div>
+					<div class="product-price">
+						Giá: <span class="price-first">40.000VND</span>
+					</div>
+					<div class="product-discount">35.000VND</div>
+				</div>
+			</div>
+			<div class="product">
+				<img src="../img/anhsanpham/shamanking.jpg" alt="Product Image">
+				<div class="product-info">
+					<div class="product-name">Shaman King</div>
+					<div class="product-price">
+						Giá: <span class="price-first">40.000VND</span>
+					</div>
+					<div class="product-discount">35.000VND</div>
+				</div>
+			</div>
+
+			<div class="more-product">
+				<a th:href="@{/cart/page-products}">Xem thêm</a>s
+			</div>
+		</div>
+	</article>
+
+	<footer>
+		<div class="footer">
+			<div class="send-email">
+				<a href="#" class="ti-email"></a>
+				<div class="register-infoemail">Đăng ký nhận bản tin</div>
+				<input type="text" placeholder="Nhập địa chỉ email của bạn...">
+				<div class="input-email">
+					<a href="#">Đăng ký</a>
+				</div>
+			</div>
+			<div class="container-footer">
+				<div class="half">
+					<div class="address">Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP
+						HCM Công Ty Cổ Phần Phát Hành Sách TP HCM - FAHASA 60 - 62 Lê Lợi,
+						Quận 1, TP. HCM, Việt Nam Fahasa.com nhận đặt hàng trực tuyến và
+						giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại
+						văn phòng cũng như tất cả Hệ Thống Fahasa trên toàn quốc.</div>
+					<img src="../img/logo-bo-cong-thuong-da-thong-bao1.png" alt=""
+						class="logo-ct">
+					<div class="icon-brand">
+						<a href=""><i class="fa-brands fa-facebook"></i></a> <a href=""><i
+							class="fa-brands fa-youtube"></i></a> <a href=""><i
+							class="fa-brands fa-square-instagram"></i></a> <a href=""><i
+							class="fa-brands fa-twitter"></i></a> <a href=""><i
+							class="fa-brands fa-pinterest"></i></a>
+					</div>
+					<div class="store-app">
+						<img src="../img/android1.png" alt=""> <img
+							src="../img/appstore1.png" alt="">
+					</div>
+				</div>
+				<div class="divider"></div>
+				<div class="half" style="width: 60%;">
+					<div class="service">
+						<a href="#">DỊCH VỤ</a>
+						<ul>
+							<li><a href="#">Điều khoản dịch vụ</a></li>
+							<li><a href="#">Chính sách bảo mật thông tin cá nhân</a></li>
+							<li><a href="#">Chính sách bảo mật thanh toán</a></li>
+							<li><a href="#">Hệ thống trung tâm nhà sách</a></li>
+							<li><a href="#">Giới thiệu TVT STORE</a></li>
+						</ul>
+					</div>
+					<div class="service">
+						<a href="#">HỖ TRỢ</a>
+						<ul>
+							<li><a href="#">Chính sách đổi - trả - hoàn tiền</a></li>
+							<li><a href="#">Chính sách bảo hành - bồi hoàn</a></li>
+							<li><a href="#">Chính sách vận chuyển</a></li>
+							<li><a href="#">Chính sách khách sỉ</a></li>
+							<li><a href="#">Phương thức thanh toán và xuất HĐ</a></li>
+						</ul>
+					</div>
+					<div class="service">
+						<a href="#">TÀI KHOẢN CỦA TÔI</a>
+						<ul>
+							<li><a href="#">Đăng nhập/Tạo mới tài khoản</a></li>
+							<li><a href="#">Thay đổi địa chỉ khách hàng</a></li>
+							<li><a href="#">Chi tiết tài khoản</a></li>
+							<li><a href="#">Lịch sử mua hàng</a></li>
+							<li><a href="#">Quên mật khẩu</a></li>
+						</ul>
+					</div>
+
+					<div class="payment-channel">
+						<ul>
+							<li><img src="../img/ahamove_logo3.png" alt=""></li>
+							<li><img src="../img/icon_giao_hang_nhanh1.png" alt="">
+							</li>
+							<li><img src="../img/momopay.png" alt=""
+								style="width: 50px; height: 50px;"></li>
+							<li><img src="../img/logo_moca_120.jpg" alt=""
+								style="width: 50px; height: 50px;"></li>
+							<li><img src="../img/icon_snappy1.png" alt=""></li>
+							<li><img src="../img/shopeepay_logo.png" alt=""></li>
+							<li><img src="../img/vnpay_logo.png" alt=""></li>
+							<li><img src="../img/vnpost1.png" alt=""></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="text-certification">Giấy chứng nhận Đăng ký Kinh
+				doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh
+				cấp ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.</div>
+		</div>
+	</footer>
+</body>
+<script src="/js/changeImg.js"></script>
+<script src="/js/countdown.js"></script>
+<script src="/js/remove-cart.js"></script>
+</html>

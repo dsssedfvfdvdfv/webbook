@@ -1,0 +1,96 @@
+@charset "utf-8";
+.login {
+    width: 600px;
+    margin: 100px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px agba(0 0 0 0.1);
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.login input[type="text"]{
+    padding: 15px;   
+    margin-bottom: 40px;
+}
+
+.login input[type="password"]{
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.login input[type="submit"]{
+    width: 100px;
+    background: #f37038;
+    color: black;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 460px;
+}
+
+.login h4{
+ 
+    margin-bottom: 20px;
+}
+
+.login input[type="submit"]:hover{
+    background: #fc9301;
+}
+
+.login input[type="password"]{
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+.login input[type="repass"]{
+    padding: 15px;
+    margin-bottom: 40px;
+} 
+table{
+    border: 1px solid #333;
+}
+
+table,
+td {
+    text-align: center;
+}
+
+thead {
+    font-weight: bold;
+    background-color: #f37038;
+    color: #fff;
+}
+
+.forget-register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-password {
+    float: left;
+    margin-left: 0;
+}
+
+.register-link {
+    float: right;
+    margin-left: 0;
+    
+}

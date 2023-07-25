@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/admin.css" />
+<style type="text/css">
+.container{
+	margin-top: 50px;
+}
+</style>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<i class="fas fa-bars"></i>
+				</button>
+				<a class="navbar-brand" href="#"><i class="fa fa-user-circle"
+					aria-hidden="true"></i> QUẢN LÝ SẢN PHẨM</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a th:href="@{/admin/customers}"
+						data-toggle="tooltip" data-placement="bottom" title="NHÂN VIÊN">KHÁCH
+							HÀNG</a></li>
+					<li><a th:href="@{/admin/bill}" data-toggle="tooltip"
+						data-placement="bottom" title="ĐIỂM DANH">HÓA ĐƠN</a></li>
+					<li><a th:href="@{/admin/productslist}" data-toggle="tooltip"
+						data-placement="bottom" title="TIỀN LƯƠNG">SẢN PHẨM</a></li>
+					<li><a th:href="@{/admin/producer}" data-toggle="tooltip"
+						data-placement="bottom" title="TIỀN LƯƠNG">NHÀ SẢN XUẤT</a></li>
+					<li><a href="#" data-toggle="tooltip" data-placement="bottom"
+						title="TÀI KHOẢN"><b>Tài Khoản</b> <span class="caret"></span>
+					</a>
+						<ul class="dropdown">
+							<li><a th:href="@{/admin/logout}" data-toggle="tooltip"
+								data-placement="bottom" title="ĐĂNG XUẤT"><b>Đăng xuất <i
+										class="fas fa-sign-out-alt"></i></b></a></li>
+						</ul></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+
+	
+<div class="container">
+    <h1>Thêm nhà sản xuất</h1>
+
+    <div class="form-group">
+        <label for="productName">Tên nhà sản xuất:</label>
+        <input type="text" class="form-control" id="producerName" name="producerName" ng-model="form.tennhasx" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Địa chỉ:</label>
+        <input type="text" class="form-control" id="adress" name="adress" ng-model="form.diachi" required>
+    </div>
+    <div class="form-group">
+        <label for="producer">Số điện thoại:</label>
+        <input type="text" class="form-control" id="numberphone" name="numberphone" ng-model="form.sdt" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary"  ng-click="create()" >Cập nhập</button>
+</div>
+
+
+  <!-- Thêm các tài nguyên JavaScript của Bootstrap -->
+ 
+</body>
+<script type="text/javascript" src="/js/producer.js"></script>
+<script type="text/javascript" src="/js/passdata.js"></script>
+</html>

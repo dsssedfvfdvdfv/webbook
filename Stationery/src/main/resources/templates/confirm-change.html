@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xác nhận đăng ký</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Xác nhận đăng ký</h2>
+        <div class="form-container">
+            <form method="post" th:action="@{/form/confirmcode-change}">
+                <div class="form-group">
+                    <label for="verificationCode">Mã xác nhận:</label>
+                    <input type="text" class="form-control" id="verificationcodee" name="verificationcodee" >
+                </div>
+                <button type="submit" class="btn btn-primary">Xác nhận</button>
+            </form>
+              <p th:text="${error}" style="color: red;"></p>
+        </div>
+    </div>
+</body>
+</html>
